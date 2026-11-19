@@ -27,7 +27,7 @@ Set by the template; nothing to fill in:
 - `HORIZON_PUBLIC_URL`: the public HTTPS URL of the UI.
 - `PORT` on each service: the port Railway health-checks.
 
-Optional, not in the template (add them on the OAP service if you need them): `SW_CORE_RECORD_DATA_TTL` (traces and logs, default 3 days), `SW_CORE_METRICS_DATA_TTL` (metrics, default 7 days), `SW_AUTHENTICATION` (a token agents must send), `JAVA_OPTS` (default heap cap 2 GB). Every OAP setting is listed in its [application.yml](https://github.com/apache/skywalking/blob/v11.1.0/oap-server/server-starter/src/main/resources/application.yml).
+Optional, not in the template (add them on the OAP service if you need them): BanyanDB retention in days, such as `SW_STORAGE_BANYANDB_TRACE_TTL_DAYS` and `SW_STORAGE_BANYANDB_LOG_TTL_DAYS` (default 3) or `SW_STORAGE_BANYANDB_METRICS_MINUTE_TTL_DAYS` (default 7; see [bydb.yml](https://github.com/apache/skywalking/blob/v11.1.0/oap-server/server-starter/src/main/resources/bydb.yml)), `SW_AUTHENTICATION` (a token agents must send), `JAVA_OPTS` (default heap cap 2 GB). Every OAP setting is listed in its [application.yml](https://github.com/apache/skywalking/blob/v11.1.0/oap-server/server-starter/src/main/resources/application.yml).
 
 ## Sending data
 
