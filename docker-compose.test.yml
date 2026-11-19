@@ -1,0 +1,23 @@
+# Local test only (mirrors the Railway services). Not used by Railway.
+services:
+  banyandb:
+    build: ./banyandb
+    volumes: [bdb:/data]
+  oap:
+    build: ./oap
+    environment:
+      SW_STORAGE_BANYANDB_TARGETS: banyandb:17912
+      JAVA_OPTS: "-Xms256m -Xmx1200m"
+    depends_on: [banyandb]
+    ports: ["12800:12800", "11800:11800"]
+  ui:
+    build: ./ui
+    environment:
+      HORIZON_ADMIN_PASSWORD: "local-test-password-123"
+      HORIZON_SESSION_COOKIE_SECURE: "false"
+      HORIZON_OAP_QUERY_URL: http://oap:12800
+      HORIZON_OAP_ADMIN_URL: http://oap:17128
+      HORIZON_OAP_ZIPKIN_URL: http://oap:9412/zipkin
+    ports: ["8081:8081"]
+volumes:
+  bdb: {}
